@@ -15,12 +15,18 @@ repositories {
 //task ruckdocker{
 //https://spring.io/guides/topicals/spring-boot-docker/
 //    exec {
-// docker build -t myorg/myapp .
+//          docker build -t myorg/myapp .
 //        executable "docker"
-//        args "run -p 8080:8080 com/dockerplay"
+//        docker build -t myorg/myapp .
+//        docker run -p 8080:8080 com/dockplay
 //    }
 //}
+//https://www.youtube.com/watch?v=NzKDlUVmIyE Im following this for mysql Docker
 
+// to create a docker sql server 
+// docker run -p 3031:3031 -d mysql/mysql-server
+//
+//https://dev.to/sandrogiacom/run-mysql-on-docker-and-use-in-your-java-app-jpn
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
