@@ -27,6 +27,8 @@ repositories {
 // docker run -p 3031:3031 -d mysql/mysql-server
 //
 //https://dev.to/sandrogiacom/run-mysql-on-docker-and-use-in-your-java-app-jpn
+
+//for checking specific port running https://stackoverflow.com/questions/1168317/check-status-of-one-port-on-remote-host
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-hateoas'
     implementation 'org.springframework.boot:spring-boot-starter-jersey'
