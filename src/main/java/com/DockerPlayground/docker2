@@ -1,0 +1,3 @@
+docker create -v mysql_volume --name mysqldata_image mysql/mysql-server:latest
+docker run -p 127.0.0.1:4200:4200 -d -e MYSQL_ROOT_PASSWORD=root --volumes-from mysqldata_container --name=actual_container mysql/mysql-server:latest
+docker exec -it actual_container bash
