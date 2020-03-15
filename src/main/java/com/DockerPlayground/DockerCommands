@@ -1,0 +1,8 @@
+create volume:                          docker volume create auth_sql_volume
+create mysql container with volume:     docker create -v auth_sql --name mysql_data_vol_container mysql/mysql-server:latest //the container to hold the volumes
+
+run the container w/ stuff:             docker run -p 3307:3307 -d -e MYSQL_ROOT_PASSWORD=root --volume mysql_data_volume --name=mysqldata_container mysql/mysql-server:latest
+//a separate container
+//this command can also replace the one above
+
+enter the container:                    docker exec -it *name* bash
