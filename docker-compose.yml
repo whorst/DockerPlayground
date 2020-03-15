@@ -12,39 +12,40 @@ services:
 #    restart: always
 
   app:
-    restart: always
     build:
-      context: DockerPlayground # Use an image built from the specified dockerfile in the `polling-app-server` directory.
+      context: "" # Use an image built from the specified dockerfile in the `polling-app-server` directory.
       dockerfile: Dockerfile
-      ports:
-        - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
-      restart: always
-      depends_on:
-        - db # This service depends on mysql. Start that first.
-      environment: # Pass environment variables to the service
-        SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/spring_security
-        SPRING_DATASOURCE_USERNAME: root
-        SPRING_DATASOURCE_PASSWORD: root
+    ports:
+      - "8080:8080" # Forward the exposed port 8080 on the container to port 8080 on the host machine
+    restart: always
+#    depends_on:
+#      - db # This service depends on mysql. Start that first.
+    environment: # Pass environment variables to the service
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/spring_security
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
           #      networks: # Networks to join (Services on the same network can communicate with each other using their name)
           #        - backend
           #        - frontend
 
-  db:
-    image: mysql/mysql-server:latest
-      ports:
-        - "4200:4200"
-      restart: always
-      environment:
-        MYSQL_DATABASE: spring_security
-        MYSQL_USER: root
-        MYSQL_PASSWORD: root
-        MYSQL_ROOT_PASSWORD: root
-      volumes:
-        - db-data:/var/lib/mysql
+#  db:
+#    image: mysql/mysql-server:latest
+#    ports:
+#      - "4200:4200"
+#    restart: always
+#    environment:
+#      MYSQL_DATABASE: spring_security
+#      MYSQL_USER: root
+#      MYSQL_PASSWORD: root
+#      MYSQL_ROOT_PASSWORD: root
+#    volumes:
+#      - ./setup.sql:/docker-entrypoint-intidb.d/setup.sql
+#      - db_data_container:/var/lib/mysql
 
-
+volumes:
+  db_data_container:
     # Volumes
-    volumes:
-      db-data:
+#  volumes:
+#    db-data:
         #https://www.baeldung.com/dockerizing-spring-boot-application
         #https://www.callicoder.com/spring-boot-mysql-react-docker-compose-example/
